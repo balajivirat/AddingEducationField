@@ -1,0 +1,79 @@
+<h1>Reactive Form</h1>
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+ 
+    <p>
+      <label for="firstname">First Name </label>
+      <input type="text" id="firstname" name="firstname" formControlName="firstname">
+    </p>
+
+    <p>
+        <label for="education">Education </label>
+        <input type="education" id="education" name="education" formControlName="education">
+        <button type="button" (click)="addvalue()">Add Education</button>
+      </p>
+
+      <div *ngFor="let value of values; let i = index"> 
+        <input type="text" id="education{{i}}" name="education{{i}}" formControlName="education{{i}}">
+        <button (click)="removevalue(i)">Remove</button>
+      </div>
+      
+    
+      <div *ngFor="let value of values;">
+        {{ value.value }}
+      </div>
+   
+    <p>
+      <label for="email">Email </label>
+      <input type="text" id="email" name="email" formControlName="email">
+    </p>
+   
+    <p>
+      <label for="gender">Gender </label>
+      <input type="radio" value="male" id="gender" name="gender" formControlName="gender"> Male
+      <input type="radio" value="female" id="gender" name="gender" formControlName="gender"> Female
+    </p>
+   
+
+   
+    <p>
+      <label for="country">country </label>
+      <select id="country" name="country"  formControlName="country">
+        <option>India</option>
+        <option>Australia</option>
+        <option>England</option>
+        <option>NewZealand</option>
+        
+      </select>
+    </p>
+   
+    <p>
+      <button type="submit">Submit</button>
+    </p>
+   
+  </form>
+
+  <table>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+        <th>Country</th>
+        <th>Education</th>
+
+    </tr>
+    <tr *ngFor = "let detail of details">
+      <td>{{detail.firstname}}</td>
+      <td>{{detail.email}}</td>
+      <td>{{detail.gender}}</td>
+      <td>{{detail.country}}</td>
+      <td>{{detail.education}},{{detail.education0}} {{detail.education1}} {{detail.education2}} {{detail.education3}}</td>
+
+    </tr>
+  </table>
+
+  <div *ngFor = "let data of education">  
+    {{data.education}}
+  </div>
+
+
+ 

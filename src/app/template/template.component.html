@@ -1,0 +1,81 @@
+<h1>Template Driven Form</h1>
+<form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm.value)">
+ 
+    <p>
+      <label for="firstname">First Name</label>
+      <input type="text" name="firstname" ngModel>
+    </p>
+   
+    <p>
+      <label for="lastname">Last Name</label>
+      <input type="text" name="lastname" ngModel>
+    </p>
+   
+    <p>
+      <label for="email">Email </label>
+      <input type="text" id="email" name="email" ngModel>
+    </p>
+   
+    <p>
+        <label for="education">Education </label>
+        <input type="text" id="education" name="education" ngModel>
+        <button type="button" (click)="addvalue()">Add Education</button>
+      </p>
+
+
+    
+      <div *ngFor="let value of values; let i = index"> 
+        <input type="text" id="education{{i}}" name="education{{i}}" ngModel>
+        <button (click)="removevalue(i)">Remove</button>
+      </div>
+      
+      <h2>Result</h2>
+      <div *ngFor="let value of values;">
+        {{ value.value }}
+      </div>
+
+
+    <p>
+      <label for="gender">Gender</label>
+      <input type="radio" value="male" name="gender" ngModel> Male
+      <input type="radio" value="female" name="gender" ngModel> Female
+    </p>
+   
+    <select name="country" ngModel>
+      <option>India</option>
+      <option>Australia</option>
+      <option>England</option>
+      <option>NewZealand</option>
+    </select>
+   
+    <p>
+      <button type="submit">Submit</button>
+    </p>
+    
+  </form>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Gender</th>
+      <th>Country</th>
+      <th>Education</th>
+    </tr>
+    <tr *ngFor = "let detail of details">
+      <td>{{detail.firstname}}</td>
+      <td>{{detail.email}}</td>
+      <td>{{detail.gender}}</td>
+      <td>{{detail.country}}</td>
+      <td>{{detail.education}},{{detail.education0}} {{detail.education1}} {{detail.education2}} {{detail.education3}}</td>
+
+    </tr>
+  </table>
+  <!-- <button>add</button>
+  <div *ngFor = "let data of education">  
+    {{data.education}}
+  </div> -->
+
+
+
+
